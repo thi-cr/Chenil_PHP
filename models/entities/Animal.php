@@ -11,6 +11,8 @@ class Animal
     private $numPuce;
     private $proprioID;
     private $raceID;
+    private $vaccins;
+    private $sejourID;
 
     /**
      * Animal constructor.
@@ -22,8 +24,10 @@ class Animal
      * @param $numPuce
      * @param $proprioID
      * @param $raceID
+     * @param bool $vaccins
+     * @param bool $sejourID
      */
-    public function __construct($id, $nom, $sexe, $sterilise, $dateNais, $numPuce, $proprioID, $raceID)
+    public function __construct($id, $nom, $sexe, $sterilise, $dateNais, $numPuce, $proprioID, $raceID, $vaccins = false, $sejourID = false)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -33,6 +37,8 @@ class Animal
         $this->numPuce = $numPuce;
         $this->proprioID = $proprioID;
         $this->raceID = $raceID;
+        $this->vaccins = $vaccins;
+        $this->sejourID = $sejourID;
     }
 
 

@@ -9,6 +9,7 @@ class personne
     private $dateNais;
     private $email;
     private $tel;
+    private $animaux;
 
     /**
      * personne constructor.
@@ -18,8 +19,9 @@ class personne
      * @param $dateNais
      * @param $email
      * @param $tel
+     * @param bool $animaux
      */
-    public function __construct($id, $nom, $prenom, $dateNais, $email, $tel)
+    public function __construct($id, $nom, $prenom, $dateNais, $email, $tel, $animaux = false)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -27,6 +29,7 @@ class personne
         $this->dateNais = $dateNais;
         $this->email = $email;
         $this->tel = $tel;
+        $this->animaux = $animaux;
     }
 
 

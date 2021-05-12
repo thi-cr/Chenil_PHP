@@ -7,6 +7,7 @@ class Vaccin
     private $nom;
     private $desc;
     private $especeID;
+    private $animaux;
 
     /**
      * Vaccin constructor.
@@ -14,13 +15,15 @@ class Vaccin
      * @param $nom
      * @param $desc
      * @param $especeID
+     * @param bool $animaux
      */
-    public function __construct($id, $nom, $desc, $especeID)
+    public function __construct($id, $nom, $desc, $especeID, $animaux = false)
     {
         $this->id = $id;
         $this->nom = $nom;
         $this->desc = $desc;
         $this->especeID = $especeID;
+        $this->animaux = $animaux;
     }
 
     public function __get($prop)
