@@ -13,7 +13,7 @@ class Router {
         $this->get = $_GET;
         $this->post = $_POST;
         $this->actions = ['create', 'edit', 'delete', 'show', 'update', 'store', 'index'];
-        $this->controllers = ['index' => '', 'pokemons' => ''];
+        $this->controllers = ['index' => 'PokemonController', 'pokemons' => 'PokemonController'];//a changer mdr
         $this->request = array();
         $this->data = $this->parseURI($_SERVER['REQUEST_URI']);
         $this->dispatch();
