@@ -58,4 +58,60 @@ class AnimalDAO extends AbstractDAO
             $this->sejours($result['id'])
         );
     }
+
+    function store ($data) {
+        if(empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['dateNais']) || empty($data['numPuce']) || empty($data['proprioID']) || empty($data['raceID'])) {
+            return false;
+        }
+
+        $pokemon = $this->create(
+            [
+                'id'=> 0,
+                'nom'=> $data['nom'],
+                'sexe' => $data['sexe'],
+                'sterilise'=> $data['sterilise'],
+                'dateNais' => $data['dateNais'],
+                'numPuce' => $data['numPuce'],
+                'proprioID' => $data['proprioID'],
+                'raceID' => $data['raceID']
+            ]
+        );
+
+        if ($pokemon) {
+            try {
+                $statement = $this->connection->prepare(
+                    "INSERT INTO {$this->table} (nom, sexe, sterilise, date_naissance, numero_puce, proprietaire_id, race_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
+                );
+                $statement->execute([
+                    htmlspecialchars($pokemon->__get('nom')),
+                    htmlspecialchars($pokemon->__get('sexe')),
+                    htmlspecialchars($pokemon->__get('sterilise')),
+                    htmlspecialchars($pokemon->__get('dateNais')),
+                    htmlspecialchars($pokemon->__get('numPuce')),
+                    htmlspecialchars($pokemon->__get('proprioID')),
+                    htmlspecialchars($pokemon->__get('raceID')),
+                ]);
+                return true;
+            } catch(PDOException $e) {
+                print $e->getMessage();
+                return false;
+            }
+        }
+    }
+
+    function delete($data)
+    {
+        if (empty($data['id'])) {
+            return false;
+        }
+
+        try {
+            $statement = $this->connection->prepare("DELETE FROM {$this->table} WHERE id = ?");
+            $statement->execute([
+                $data['id']
+            ]);
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
 }
