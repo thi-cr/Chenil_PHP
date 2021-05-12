@@ -64,7 +64,7 @@ class AnimalDAO extends AbstractDAO
             return false;
         }
 
-        $pokemon = $this->create(
+        $animal = $this->create(
             [
                 'id'=> 0,
                 'nom'=> $data['nom'],
@@ -77,19 +77,19 @@ class AnimalDAO extends AbstractDAO
             ]
         );
 
-        if ($pokemon) {
+        if ($animal) {
             try {
                 $statement = $this->connection->prepare(
                     "INSERT INTO {$this->table} (nom, sexe, sterilise, date_naissance, numero_puce, proprietaire_id, race_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
                 );
                 $statement->execute([
-                    htmlspecialchars($pokemon->__get('nom')),
-                    htmlspecialchars($pokemon->__get('sexe')),
-                    htmlspecialchars($pokemon->__get('sterilise')),
-                    htmlspecialchars($pokemon->__get('dateNais')),
-                    htmlspecialchars($pokemon->__get('numPuce')),
-                    htmlspecialchars($pokemon->__get('proprioID')),
-                    htmlspecialchars($pokemon->__get('raceID')),
+                    htmlspecialchars($animal->__get('nom')),
+                    htmlspecialchars($animal->__get('sexe')),
+                    htmlspecialchars($animal->__get('sterilise')),
+                    htmlspecialchars($animal->__get('dateNais')),
+                    htmlspecialchars($animal->__get('numPuce')),
+                    htmlspecialchars($animal->__get('proprioID')),
+                    htmlspecialchars($animal->__get('raceID')),
                 ]);
                 return true;
             } catch(PDOException $e) {
