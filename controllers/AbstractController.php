@@ -1,7 +1,7 @@
 <?php
 
 
-class AbstractController
+abstract class AbstractController
 {
 
 }

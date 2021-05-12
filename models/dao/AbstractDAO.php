@@ -1,7 +1,7 @@
 <?php
 
 
-class AbstractDAO
+abstract class AbstractDAO
 {
 
 }
