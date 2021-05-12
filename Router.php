@@ -1,6 +1,7 @@
 <?php
 
-class Router {
+class Router
+{
 
     private $get;
     private $post;
@@ -9,7 +10,8 @@ class Router {
     private $request;
     private $actions;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->get = $_GET;
         $this->post = $_POST;
         $this->actions = ['create', 'edit', 'delete', 'show', 'update', 'store', 'index'];
@@ -20,9 +22,10 @@ class Router {
         $this->run();
     }
 
-    private function parseURI ($server_uri) {
+    private function parseURI($server_uri)
+    {
         // si il y a un ? dans $server_uri, alors enlever tout ce qu'il y a apres
-        if (strpos( $server_uri, "?")) {
+        if (strpos($server_uri, "?")) {
             $server_uri = strstr($server_uri, '?', true);
         }
 
@@ -30,7 +33,8 @@ class Router {
         return $server_uri;
     }
 
-    private function dispatch () {
+    private function dispatch()
+    {
         //verifier si on a 1 controller, 1 action et 1 id
         if (!array_key_exists($this->data[0], $this->controllers)) {
             $this->data[0] = 'index';
@@ -39,7 +43,7 @@ class Router {
 
         //detecter l'action => voir si on en a trouvé une, ou pas, si celle qu'on a trouvé est autorisée
         if (count($this->data) >= 2 && $this->data[1]) {
-            if(!in_array($this->data[1], $this->actions)) {
+            if (!in_array($this->data[1], $this->actions)) {
                 echo "ERR : ACTION NOT FOUND";
                 die;
             }
@@ -65,12 +69,13 @@ class Router {
 
     }
 
-    private function run () {
+    private function run()
+    {
         //instancier 1 controller
         $this->controller_instance = new $this->request['controller'];
 
         $data = $this->get;
-        if($this->request['method'] == 'post')  {
+        if ($this->request['method'] == 'post') {
             $data = $this->post;
         }
 

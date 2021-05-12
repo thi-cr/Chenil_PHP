@@ -3,5 +3,36 @@
 
 class AnimalController extends AbstractController
 {
+    public function __construct()
+    {
+        $this->dao = new AnimalDAO();
+    }
 
+    public function index()
+    {
+        $animaux = $this->dao->fetchAll();
+
+        $personneDAO = new PersonneDAO();
+        $personnes = $personneDAO->fetchAll();
+        //INCLUDES A FAIRE
+    }
+
+    public function store($id, $data)
+    {
+        $is_stored_in_db = $this->dao->store($data);
+        if ($is_stored_in_db) {
+            $animaux = $this->dao->fetchAll();
+            //INCLUDE A FAIRE
+        } else {
+            echo "Erreur";
+            return http_response_code(401);
+        }
+    }
+
+    public function delete($id, $data)
+    {
+        $this->dao->delete($data);
+        $animaux = $this->dao->fetchAll();
+        //INCLUDE A FAIRE
+    }
 }
