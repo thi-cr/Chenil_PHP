@@ -50,5 +50,17 @@ class Animal
         }
     }
 
+    public function get_ids($objs)
+    {
+        //renvoyer un tableau d'ID en ayant recu un tableau d'objets
+        $ids = array();
+        foreach ($objs as $obj) {
+            if ($obj->id) {
+                array_push($ids, $obj->id);
+            }
+        }
+        return $ids;
+    }
 
-}
+
+    }
