@@ -107,8 +107,11 @@ class AnimalDAO extends AbstractDAO
                 htmlspecialchars($data['race']),
 
             ]);
-            $id = $this->connection->lastInsertId();
-            $animalDAO->associate_vaccins($id, $data['vaccins']);
+            if (isset($data['vaccins'])) {
+                $id = $this->connection->lastInsertId();
+                $animalDAO->associate_vaccins($id, $data['vaccins']);
+                return true;
+            }
             return true;
         } catch (PDOException $e) {
             print $e->getMessage();

@@ -15,7 +15,7 @@ class Router
         $this->get = $_GET;
         $this->post = $_POST;
         $this->actions = ['create', 'edit', 'delete', 'show', 'update', 'store', 'index', 'add'];
-        $this->controllers = ['index' => 'AnimalController', 'animaux' => 'AnimalController'];
+        $this->controllers = ['index' => 'PersonneController', 'animaux' => 'AnimalController', 'personnes' => 'PersonneController', 'especes' => 'EspeceController', 'races' => 'RaceController', 'sejours' => 'SejourController', 'vaccins' => 'VaccinController'];
         $this->request = array();
         $this->data = $this->parseURI($_SERVER['REQUEST_URI']);
         $this->dispatch();

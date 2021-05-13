@@ -17,12 +17,12 @@ class PersonneDAO extends AbstractDAO
     public function create($result)
     {
         return new Personne(
-        $result['id'],
-        $result['nom'],
-        $result['prenom'],
-        $result['date_naissance'],
-        $result['email'],
-        $result['tel']
+            $result['id'],
+            $result['nom'],
+            $result['prenom'],
+            $result['date_naissance'],
+            $result['email'],
+            $result['tel']
         );
     }
 
@@ -38,4 +38,62 @@ class PersonneDAO extends AbstractDAO
             $this->animaux($result['id'])
         );
     }
+
+    function delete($data)
+    {
+        if (empty($data['id'])) {
+            return false;
+        }
+
+        try {
+            $statement = $this->connection->prepare("DELETE FROM {$this->table} WHERE id = ?");
+            $statement->execute([
+                $data['id']
+            ]);
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
+    public function update($id, $data)
+    {
+        try {
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET nom = ?, prenom = ?, date_naissance = ?, email = ?, tel = ? WHERE id = ?");
+            $statement->execute(
+                [
+                    htmlspecialchars($data['nom']),
+                    htmlspecialchars($data['prenom']),
+                    htmlspecialchars($data['date_naissance']),
+                    htmlspecialchars($data['email']),
+                    htmlspecialchars($data['tel']),
+                    htmlspecialchars($data['id'])
+                ]
+            );
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
+    function store($id, $data)
+    {
+        if (empty($data['nom']) || empty($data['prenom']) || empty($data['date_naissance']) || empty($data['email']) || empty($data['tel'])) {
+            return false;
+        }
+
+        try {
+            $statement = $this->connection->prepare(
+                "INSERT INTO {$this->table} (nom, prenom, date_naissance, email, tel) VALUES (?, ?, ?, ?, ?)"
+            );
+            $statement->execute([
+                htmlspecialchars($data['nom']),
+                htmlspecialchars($data['prenom']),
+                htmlspecialchars($data['date_naissance']),
+                htmlspecialchars($data['email']),
+                htmlspecialchars($data['tel'])
+            ]);
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+    }
+
 }

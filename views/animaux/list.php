@@ -1,5 +1,5 @@
 <?php if (!empty($animaux)): ?>
-    <section id="animal-list">
+    <section id="animaux-list">
         <table>
             <thead>
             <th>Nom</th>
