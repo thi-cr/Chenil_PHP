@@ -27,7 +27,7 @@ abstract class AbstractController
         var_dump('no update');
     }
 
-    public function store($data)
+    public function store($id, $data)
     {
         var_dump('no store');
     }

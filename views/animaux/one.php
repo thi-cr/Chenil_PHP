@@ -11,4 +11,5 @@
 <?php endif; ?>
 <h2>Propriétaire</h2>
     <h3><?= $animal->nom ?> appartient à <?= $animal->proprietaire_id->nom ?></h3>
+<a href="/animaux/index">Liste</a>
 

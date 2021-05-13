@@ -73,14 +73,12 @@ class AnimalDAO extends AbstractDAO
         );
     }
 
-    function store($data)
+    function store($id, $data)
     {
-        var_dump($data);
         if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['personne']) || empty($data['race'])) {
             return false;
         }
         $animalDAO = new AnimalDAO();
-        $animalDAO->associate_vaccins($data['id'], $data['vaccins']);
 
         $animal = $this->create(
             [
@@ -90,29 +88,33 @@ class AnimalDAO extends AbstractDAO
                 'sterilise' => $data['sterilise'],
                 'date_naissance' => $data['date_naissance'],
                 'numero_puce' => $data['numero_puce'],
-                'personne' => $data['personne'],
-                'race' => $data['race']
+                'proprietaire_id' => $data['personne'],
+                'race_id' => $data['race']
             ]
         );
 
-        if ($animal) {
-            try {
-                $statement = $this->connection->prepare(
-                    "INSERT INTO {$this->table} (nom, sexe, sterilise, date_naissance, numero_puce, proprietaire_id, race_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
-                );
-                $statement->execute([
-                    htmlspecialchars($animal->__get('nom')),
-                    htmlspecialchars($animal->__get('sexe')),
-                    htmlspecialchars($animal->__get('sterilise')),
-                    htmlspecialchars($animal->__get('date_naissance')),
-                    htmlspecialchars($animal->__get('numero_puce')),
-                    htmlspecialchars($animal->__get('personne')),
-                    htmlspecialchars($animal->__get('race')),
-                ]);
-            } catch (PDOException $e) {
-                print $e->getMessage();
-            }
+        try {
+            $statement = $this->connection->prepare(
+                "INSERT INTO {$this->table} (nom, sexe, sterilise, date_naissance, numero_puce, proprietaire_id, race_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+            $statement->execute([
+                htmlspecialchars($data['nom']),
+                htmlspecialchars($data['sexe']),
+                htmlspecialchars($data['sterilise']),
+                htmlspecialchars($data['date_naissance']),
+                htmlspecialchars($data['numero_puce']),
+                htmlspecialchars($data['personne']),
+                htmlspecialchars($data['race']),
+
+            ]);
+            $id = $this->connection->lastInsertId();
+            $animalDAO->associate_vaccins($id, $data['vaccins']);
+            return true;
+        } catch (PDOException $e) {
+            print $e->getMessage();
         }
+
+
     }
 
     function delete($data)

@@ -19,9 +19,9 @@ class AnimalController extends AbstractController
         include('../views/foot.php');
     }
 
-    public function store($data)
+    public function store($id, $data)
     {
-        $is_stored_in_db = $this->dao->store($data);
+        $is_stored_in_db = $this->dao->store($id, $data);
         if ($is_stored_in_db) {
             $animaux = $this->dao->fetchAll();
             include('../views/animaux/list.php');

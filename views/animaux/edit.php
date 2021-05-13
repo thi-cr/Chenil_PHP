@@ -15,19 +15,19 @@
             <br><label>Proprietaire</label>
             <select name="personne" id="personne">
                 <?php foreach ($personnes as $personne): ; ?>
-                    <option type="text" name="personne_id" value="<?= $personne->id; ?>" <?php if ($animal->proprietaire_id->id == $personne->id){ echo "selected";}?>><?= $personne->nom ?></option>
+                    <option type="number" name="personne_id" value="<?= $personne->id; ?>" <?php if ($animal->proprietaire_id->id == $personne->id){ echo "selected";}?>><?= $personne->nom ?></option>
                 <?php endforeach; ?>
             </select>
             <label>Race</label><br>
             <select name="race" id="race">
                 <?php foreach ($races as $race): ; ?>
-                    <option type="text" name="race_id" value="<?= $race->id; ?>" <?php if ($animal->race_id->id == $race->id){ echo "selected";}?>><?= $race->nom ?></option>
+                    <option type="number" name="race_id" value="<?= $race->id; ?>" <?php if ($animal->race_id->id == $race->id){ echo "selected";}?>><?= $race->nom ?></option>
                 <?php endforeach; ?>
             </select>
             <label>Vaccins</label><br>
             <select name="vaccins[]" id="vaccins" multiple>
                 <?php foreach ($vaccins as $vaccin): ; ?>
-                    <option type="text" name="vaccin_id"
+                    <option type="number" name="vaccin_id"
                             value="<?= $vaccin->id; ?>" <?php if ($animal->vaccins && $animal->has_vaccin($vaccin->id)) {
                         echo "selected";
                     } ?>><?= $vaccin->nom ?></option>

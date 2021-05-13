@@ -34,6 +34,7 @@
                 } ?><?= $vaccin->nom ?></option>
             <?php endforeach; ?>
         </select>
+        <input type="hidden" name="id" value="<?= $id=0; ?>">
         <input type="submit" value="AJOUTER" name="addanimal">
     </form>
 </section>
