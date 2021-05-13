@@ -37,4 +37,9 @@ class AnimalController extends AbstractController
         $animaux = $this->dao->fetchAll();
         //INCLUDE A FAIRE
     }
+
+    public function show ($id) {
+        $animal = $this->dao->fetch($id);
+        include ('../views/animaux/one.php');
+    }
 }
