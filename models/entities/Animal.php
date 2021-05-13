@@ -68,5 +68,32 @@ class Animal
         return $ids;
     }
 
+    public function has_vaccin ($vaccin_id) {
+        //detecter si dans $this->vaccins il y a un vaccin avec cette id, si oui je vais return true sinon false
+        if($this->vaccins) {
+            foreach($this->vaccins as $vaccin) {
+                if($vaccin && $vaccin->id && $vaccin->id == $vaccin_id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function has_vaccins ($vaccin_ids) {
+        $current_ids = $this->get_ids($this->vaccins);
+        $dissociate = array_diff($current_ids, $vaccin_ids);
+        $associate = array();
+
+        foreach($vaccin_ids as $vaccin_id) {
+            if (!in_array($vaccin_id, $current_ids)) {
+                array_push($associate, $vaccin_id);
+            }
+        }
+
+        return ["associate" => $associate, "dissociate" => $dissociate];
+
+    }
+
 
     }

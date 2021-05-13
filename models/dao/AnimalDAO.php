@@ -29,13 +29,15 @@ class AnimalDAO extends AbstractDAO
         return $this->belongsTo(new RaceDAO(), $race_id);
     }
 
-    public function associate_vaccins ($id, $vaccin_ids) {
+    public function associate_vaccins($id, $vaccin_ids)
+    {
         foreach ($vaccin_ids as $vaccin) {
             $this->associate('vaccin_animal', $id, 'animal_id', 'vaccin_id', $vaccin);
         }
     }
 
-    public function dissociate_vaccins ($id, $vaccin_ids) {
+    public function dissociate_vaccins($id, $vaccin_ids)
+    {
         foreach ($vaccin_ids as $vaccin) {
             $this->dissociate('vaccin_animal', $id, 'animal_id', 'vaccin_id', $vaccin);
         }
@@ -71,17 +73,18 @@ class AnimalDAO extends AbstractDAO
         );
     }
 
-    function store ($data) {
-        if(empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['proprietaire_id']) || empty($data['race_id'])) {
+    function store($data)
+    {
+        if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['proprietaire_id']) || empty($data['race_id'])) {
             return false;
         }
 
         $animal = $this->create(
             [
-                'id'=> 0,
-                'nom'=> $data['nom'],
+                'id' => 0,
+                'nom' => $data['nom'],
                 'sexe' => $data['sexe'],
-                'sterilise'=> $data['sterilise'],
+                'sterilise' => $data['sterilise'],
                 'date_naissance' => $data['date_naissance'],
                 'numero_puce' => $data['numero_puce'],
                 'proprietaire_id' => $data['proprietaire_id'],
@@ -104,7 +107,7 @@ class AnimalDAO extends AbstractDAO
                     htmlspecialchars($animal->__get('race_id')),
                 ]);
                 return true;
-            } catch(PDOException $e) {
+            } catch (PDOException $e) {
                 print $e->getMessage();
                 return false;
             }
@@ -124,6 +127,43 @@ class AnimalDAO extends AbstractDAO
             ]);
         } catch (PDOException $e) {
             print $e->getMessage();
+        }
+    }
+
+
+    public function update($id, $data)
+    {
+        try {
+            $statement = $this->connection->prepare("UPDATE animaux SET nom = ?, sexe = ?, sterilise = ?, date_naissance = ?, numero_puce = ?, proprietaire_id = ?, race_id = ? WHERE id = ?");
+            $statement->execute(
+                [
+                    htmlspecialchars($data['nom']),
+                    htmlspecialchars($data['sexe']),
+                    htmlspecialchars($data['sterilise']),
+                    htmlspecialchars($data['date_naissance']),
+                    htmlspecialchars($data['numero_puce']),
+                    htmlspecialchars($data['personne']),
+                    htmlspecialchars($data['race']),
+                    htmlspecialchars($data['id'])
+                ]
+            );
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+
+        $animal = $this->fetch($data['id']);
+        $animalDAO = new AnimalDAO();
+
+        if ($data['vaccins']) {
+            $diff = $animal->has_vaccins($data['vaccins']);
+
+            if ($diff['associate']) {
+                $animalDAO->associate_vaccins($data['id'], $diff['associate']);
+            }
+
+            if ($diff['dissociate']) {
+                $animalDAO->dissociate_vaccins($data['id'], $diff['dissociate']);
+            }
         }
     }
 }

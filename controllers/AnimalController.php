@@ -14,9 +14,9 @@ class AnimalController extends AbstractController
 
         $personneDAO = new PersonneDAO();
         $personnes = $personneDAO->fetchAll();
-        include ('../views/head.php');
-        include ('../views/animaux/list.php');
-        include ('../views/foot.php');
+        include('../views/head.php');
+        include('../views/animaux/list.php');
+        include('../views/foot.php');
     }
 
     public function store($id, $data)
@@ -35,11 +35,31 @@ class AnimalController extends AbstractController
     {
         $this->dao->delete($data);
         $animaux = $this->dao->fetchAll();
-        include ('../views/animaux/list.php');
+        include('../views/animaux/list.php');
     }
 
-    public function show ($id) {
+    public function show($id)
+    {
         $animal = $this->dao->fetch($id);
-        include ('../views/animaux/one.php');
+        include('../views/animaux/one.php');
+    }
+
+    public function edit($id)
+    {
+        $animal = $this->dao->fetch($id);
+        $vaccinDAO = new VaccinDAO();
+        $vaccins = $vaccinDAO->fetchAll();
+        $personneDAO = new PersonneDAO();
+        $personnes = $personneDAO->fetchAll();
+        $raceDAO = new RaceDAO();
+        $races = $raceDAO->fetchAll();
+        include('../views/animaux/edit.php');
+    }
+
+    public function update($id, $data)
+    {
+        $this->dao->update($id, $data);
+        $this->dao->fetchAll();
+        include('../views/animaux/list.php');
     }
 }
