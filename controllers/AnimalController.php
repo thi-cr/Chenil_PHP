@@ -14,7 +14,9 @@ class AnimalController extends AbstractController
 
         $personneDAO = new PersonneDAO();
         $personnes = $personneDAO->fetchAll();
-        //INCLUDES A FAIRE
+        include ('../views/head.php');
+        include ('../views/animaux/list.php');
+        include ('../views/foot.php');
     }
 
     public function store($id, $data)

@@ -32,14 +32,12 @@ class AnimalDAO extends AbstractDAO
     public function associate_vaccins ($id, $vaccin_ids) {
         foreach ($vaccin_ids as $vaccin) {
             $this->associate('vaccin_animal', $id, 'animal_id', 'vaccin_id', $vaccin);
-            //table intermédiaire, l'id du pokémon, la colonne dans la table 'pokemon_id', 'type_id', $type
         }
     }
 
     public function dissociate_vaccins ($id, $vaccin_ids) {
         foreach ($vaccin_ids as $vaccin) {
             $this->dissociate('vaccin_animal', $id, 'animal_id', 'vaccin_id', $vaccin);
-            //table intermédiaire, l'id du pokémon, la colonne dans la table 'pokemon_id', 'type_id', $type
         }
     }
 
