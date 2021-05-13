@@ -135,7 +135,7 @@ class AnimalDAO extends AbstractDAO
     public function update($id, $data)
     {
         try {
-            $statement = $this->connection->prepare("UPDATE animaux SET nom = ?, sexe = ?, sterilise = ?, date_naissance = ?, numero_puce = ?, proprietaire_id = ?, race_id = ? WHERE id = ?");
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET nom = ?, sexe = ?, sterilise = ?, date_naissance = ?, numero_puce = ?, proprietaire_id = ?, race_id = ? WHERE id = ?");
             $statement->execute(
                 [
                     htmlspecialchars($data['nom']),
