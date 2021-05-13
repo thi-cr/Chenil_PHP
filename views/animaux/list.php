@@ -2,8 +2,12 @@
     <section id="animal-list">
         <table>
             <?php foreach ($animaux as $animal): ?>
+
                 <tr>
-                    <?php var_dump($animal) ?>
+                    <td>ID</td>
+                    <td>Nom</td>
+                </tr>
+                <tr>
                     <td><?= $animal->__get('id'); ?></td>
                     <td><?= $animal->__get('nom'); ?></td>
                     <td><?= $animal->__get('sexe'); ?></td>
@@ -14,7 +18,12 @@
                     <td><?= $animal->proprietaire_id->__get('nom'); ?></td>
                     <td><?= $animal->proprietaire_id->__get('prenom'); ?></td>
                     <td><a href="/animaux/show/<?= $animal->id; ?>">VOIR</a></td>
-                    <td><a href="/animaux/delete/<?= json_encode($animal, JSON_FORCE_OBJECT);?>">SUPPRIMER</a></td>
+                    <td>
+                        <form method="post" action="/animaux/delete">
+                            <input type="hidden" name="id" value="<?= $animal->id; ?>">
+                            <input type="submit" value="Supprimer" name="delete">
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

@@ -33,7 +33,6 @@ class AnimalController extends AbstractController
 
     public function delete($id, $data)
     {
-        $data = json_decode($data);
         $this->dao->delete($data);
         $animaux = $this->dao->fetchAll();
         include ('../views/animaux/list.php');
