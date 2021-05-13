@@ -91,6 +91,7 @@ class PersonneDAO extends AbstractDAO
                 htmlspecialchars($data['email']),
                 htmlspecialchars($data['tel'])
             ]);
+            return true;
         } catch (PDOException $e) {
             print $e->getMessage();
         }

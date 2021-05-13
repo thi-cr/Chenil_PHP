@@ -44,7 +44,7 @@ class PersonneController extends AbstractController
 
     public function edit($id)
     {
-        $personnes = $this->dao->fetch($id);
+        $personne = $this->dao->fetch($id);
         $animalDAO = new AnimalDAO();
         $animaux = $animalDAO->fetchAll();
 
@@ -62,6 +62,6 @@ class PersonneController extends AbstractController
     {
         $animalDAO = new AnimalDAO();
         $animaux = $animalDAO->fetchAll();
-        include('../views/personnes/edit.php');
+        include('../views/personnes/ajouter.php');
     }
 }

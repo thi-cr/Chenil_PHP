@@ -5,11 +5,11 @@
         <br><label>Sexe</label>
         <input type="text" name="sexe" >
         <br><label>Strérilisé</label>
-        <input type="text" name="sterilise" ">
+        <input type="text" name="sterilise">
         <br><label>Date de naissance</label>
-        <input type="date" name="date_naissance" ">
+        <input type="date" name="date_naissance">
         <br><label>Numero de puce</label>
-        <input type="number" name="numero_puce" ">
+        <input type="number" name="numero_puce">
         <br><label>Proprietaire</label>
         <select name="personne" id="personne">
             <?php foreach ($personnes as $personne): ; ?>
