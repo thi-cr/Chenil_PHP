@@ -14,6 +14,7 @@
                     <td><?= $animal->proprietaire_id->__get('nom'); ?></td>
                     <td><?= $animal->proprietaire_id->__get('prenom'); ?></td>
                     <td><a href="/animaux/show/<?= $animal->id; ?>">VOIR</a></td>
+                    <td><a href="/animaux/delete/<?= json_encode($animal, JSON_FORCE_OBJECT);?>">SUPPRIMER</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
