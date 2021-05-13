@@ -27,7 +27,7 @@ abstract class AbstractController
         var_dump('no update');
     }
 
-    public function store($id, $data)
+    public function store($data)
     {
         var_dump('no store');
     }
@@ -35,5 +35,10 @@ abstract class AbstractController
     public function index()
     {
         var_dump('no index');
+    }
+
+    public function add()
+    {
+        var_dump('no add');
     }
 }

@@ -75,9 +75,12 @@ class AnimalDAO extends AbstractDAO
 
     function store($data)
     {
-        if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['proprietaire_id']) || empty($data['race_id'])) {
+        var_dump($data);
+        if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['personne']) || empty($data['race'])) {
             return false;
         }
+        $animalDAO = new AnimalDAO();
+        $animalDAO->associate_vaccins($data['id'], $data['vaccins']);
 
         $animal = $this->create(
             [
@@ -87,8 +90,8 @@ class AnimalDAO extends AbstractDAO
                 'sterilise' => $data['sterilise'],
                 'date_naissance' => $data['date_naissance'],
                 'numero_puce' => $data['numero_puce'],
-                'proprietaire_id' => $data['proprietaire_id'],
-                'race_id' => $data['race_id']
+                'personne' => $data['personne'],
+                'race' => $data['race']
             ]
         );
 
@@ -103,13 +106,11 @@ class AnimalDAO extends AbstractDAO
                     htmlspecialchars($animal->__get('sterilise')),
                     htmlspecialchars($animal->__get('date_naissance')),
                     htmlspecialchars($animal->__get('numero_puce')),
-                    htmlspecialchars($animal->__get('proprietaire_id')),
-                    htmlspecialchars($animal->__get('race_id')),
+                    htmlspecialchars($animal->__get('personne')),
+                    htmlspecialchars($animal->__get('race')),
                 ]);
-                return true;
             } catch (PDOException $e) {
                 print $e->getMessage();
-                return false;
             }
         }
     }
