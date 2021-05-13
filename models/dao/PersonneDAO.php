@@ -20,7 +20,7 @@ class PersonneDAO extends AbstractDAO
         $result['id'],
         $result['nom'],
         $result['prenom'],
-        $result['dateNais'],
+        $result['date_naissance'],
         $result['email'],
         $result['tel']
         );
@@ -32,7 +32,7 @@ class PersonneDAO extends AbstractDAO
             $result['id'],
             $result['nom'],
             $result['prenom'],
-            $result['dateNais'],
+            $result['date_naissance'],
             $result['email'],
             $result['tel'],
             $this->animaux($result['id'])

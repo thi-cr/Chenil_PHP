@@ -48,10 +48,10 @@ class AnimalDAO extends AbstractDAO
             $result['nom'],
             $result['sexe'],
             $result['sterilise'],
-            $result['dateNais'],
-            $result['numPuce'],
-            $result['proprioID'],
-            $result['raceID']
+            $result['date_naissance'],
+            $result['numero_puce'],
+            $result['proprietaire_id'],
+            $result['race_id']
         );
     }
 
@@ -62,17 +62,17 @@ class AnimalDAO extends AbstractDAO
             $result['nom'],
             $result['sexe'],
             $result['sterilise'],
-            $result['dateNais'],
-            $result['numPuce'],
-            $this->personne($result['proprioID']),
-            $this->race($result['raceID']),
+            $result['date_naissance'],
+            $result['numero_puce'],
+            $this->personne($result['proprietaire_id']),
+            $this->race($result['race_id']),
             $this->vaccins($result['id']),
             $this->sejours($result['id'])
         );
     }
 
     function store ($data) {
-        if(empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['dateNais']) || empty($data['numPuce']) || empty($data['proprioID']) || empty($data['raceID'])) {
+        if(empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['proprietaire_id']) || empty($data['race_id'])) {
             return false;
         }
 
@@ -82,10 +82,10 @@ class AnimalDAO extends AbstractDAO
                 'nom'=> $data['nom'],
                 'sexe' => $data['sexe'],
                 'sterilise'=> $data['sterilise'],
-                'dateNais' => $data['dateNais'],
-                'numPuce' => $data['numPuce'],
-                'proprioID' => $data['proprioID'],
-                'raceID' => $data['raceID']
+                'date_naissance' => $data['date_naissance'],
+                'numero_puce' => $data['numero_puce'],
+                'proprietaire_id' => $data['proprietaire_id'],
+                'race_id' => $data['race_id']
             ]
         );
 
@@ -98,10 +98,10 @@ class AnimalDAO extends AbstractDAO
                     htmlspecialchars($animal->__get('nom')),
                     htmlspecialchars($animal->__get('sexe')),
                     htmlspecialchars($animal->__get('sterilise')),
-                    htmlspecialchars($animal->__get('dateNais')),
-                    htmlspecialchars($animal->__get('numPuce')),
-                    htmlspecialchars($animal->__get('proprioID')),
-                    htmlspecialchars($animal->__get('raceID')),
+                    htmlspecialchars($animal->__get('date_naissance')),
+                    htmlspecialchars($animal->__get('numero_puce')),
+                    htmlspecialchars($animal->__get('proprietaire_id')),
+                    htmlspecialchars($animal->__get('race_id')),
                 ]);
                 return true;
             } catch(PDOException $e) {

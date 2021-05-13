@@ -7,10 +7,10 @@ class Animal
     private $nom;
     private $sexe;
     private $sterilise;
-    private $dateNais;
-    private $numPuce;
-    private $proprioID;
-    private $raceID;
+    private $date_naissance;
+    private $numero_puce;
+    private $proprietaire_id;
+    private $race_id;
     private $vaccins;
     private $sejourID;
 
@@ -20,23 +20,23 @@ class Animal
      * @param $nom
      * @param $sexe
      * @param $sterilise
-     * @param $dateNais
-     * @param $numPuce
-     * @param $proprioID
-     * @param $raceID
+     * @param $date_naissance
+     * @param $numero_puce
+     * @param $proprietaire_id
+     * @param $race_id
      * @param bool $vaccins
      * @param bool $sejourID
      */
-    public function __construct($id, $nom, $sexe, $sterilise, $dateNais, $numPuce, $proprioID, $raceID, $vaccins = false, $sejourID = false)
+    public function __construct($id, $nom, $sexe, $sterilise, $date_naissance, $numero_puce, $proprietaire_id, $race_id, $vaccins = false, $sejourID = false)
     {
         $this->id = $id;
         $this->nom = $nom;
         $this->sexe = $sexe;
         $this->sterilise = $sterilise;
-        $this->dateNais = $dateNais;
-        $this->numPuce = $numPuce;
-        $this->proprioID = $proprioID;
-        $this->raceID = $raceID;
+        $this->date_naissance = $date_naissance;
+        $this->numero_puce = $numero_puce;
+        $this->proprietaire_id = $proprietaire_id;
+        $this->race_id = $race_id;
         $this->vaccins = $vaccins;
         $this->sejourID = $sejourID;
     }

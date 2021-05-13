@@ -6,7 +6,7 @@ class personne
     private $id;
     private $nom;
     private $prenom;
-    private $dateNais;
+    private $date_naissance;
     private $email;
     private $tel;
     private $animaux;
@@ -16,17 +16,17 @@ class personne
      * @param $id
      * @param $nom
      * @param $prenom
-     * @param $dateNais
+     * @param $date_naissance
      * @param $email
      * @param $tel
      * @param bool $animaux
      */
-    public function __construct($id, $nom, $prenom, $dateNais, $email, $tel, $animaux = false)
+    public function __construct($id, $nom, $prenom, $date_naissance, $email, $tel, $animaux = false)
     {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->dateNais = $dateNais;
+        $this->date_naissance = $date_naissance;
         $this->email = $email;
         $this->tel = $tel;
         $this->animaux = $animaux;

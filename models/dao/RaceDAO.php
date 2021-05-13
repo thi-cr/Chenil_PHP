@@ -19,7 +19,7 @@ class RaceDAO extends AbstractDAO
         return new Race(
             $result['id'],
             $result['nom'],
-            $result['especeID']
+            $result['espece_id']
         );
     }
 

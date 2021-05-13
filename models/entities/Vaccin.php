@@ -5,24 +5,24 @@ class Vaccin
 {
     private $id;
     private $nom;
-    private $desc;
-    private $especeID;
+    private $description;
+    private $espece_id;
     private $animaux;
 
     /**
      * Vaccin constructor.
      * @param $id
      * @param $nom
-     * @param $desc
-     * @param $especeID
+     * @param $description
+     * @param $espece_id
      * @param bool $animaux
      */
-    public function __construct($id, $nom, $desc, $especeID, $animaux = false)
+    public function __construct($id, $nom, $description, $espece_id, $animaux = false)
     {
         $this->id = $id;
         $this->nom = $nom;
-        $this->desc = $desc;
-        $this->especeID = $especeID;
+        $this->description = $description;
+        $this->espece_id = $espece_id;
         $this->animaux = $animaux;
     }
 

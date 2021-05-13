@@ -19,8 +19,8 @@ class VaccinDAO extends AbstractDAO
         return new Vaccin(
             $result['id'],
             $result['nom'],
-            $result['desc'],
-            $result['especeID']
+            $result['description'],
+            $result['espece_id']
         );
     }
 
@@ -29,8 +29,8 @@ class VaccinDAO extends AbstractDAO
         return new Vaccin(
             $result['id'],
             $result['nom'],
-            $result['desc'],
-            $result['especeID'],
+            $result['description'],
+            $result['espece_id'],
             $this->animaux($result['id'])
         );
     }

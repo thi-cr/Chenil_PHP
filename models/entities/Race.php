@@ -5,19 +5,19 @@ class Race
 {
     private $id;
     private $nom;
-    private $especeID;
+    private $espece_id;
 
     /**
      * Race constructor.
      * @param $id
      * @param $nom
-     * @param $especeID
+     * @param $espece_id
      */
-    public function __construct($id, $nom, $especeID)
+    public function __construct($id, $nom, $espece_id)
     {
         $this->id = $id;
         $this->nom = $nom;
-        $this->especeID = $especeID;
+        $this->espece_id = $espece_id;
     }
 
     public function __get($prop)

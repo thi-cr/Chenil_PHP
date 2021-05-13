@@ -4,23 +4,23 @@
 class Sejour
 {
     private $id;
-    private $dateDebut;
-    private $dateFin;
-    private $animalID;
+    private $date_debut;
+    private $date_fin;
+    private $animal_id;
 
     /**
      * Sejour constructor.
      * @param $id
-     * @param $dateDebut
-     * @param $dateFin
-     * @param $animalID
+     * @param $date_debut
+     * @param $date_fin
+     * @param $animal_id
      */
-    public function __construct($id, $dateDebut, $dateFin, $animalID)
+    public function __construct($id, $date_debut, $date_fin, $animal_id)
     {
         $this->id = $id;
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
-        $this->animalID = $animalID;
+        $this->date_debut = $date_debut;
+        $this->date_fin = $date_fin;
+        $this->animal_id = $animal_id;
     }
 
     public function __get($prop)
