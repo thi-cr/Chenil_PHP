@@ -59,7 +59,7 @@ class AnimalController extends AbstractController
     public function update($id, $data)
     {
         $this->dao->update($id, $data);
-        $this->dao->fetchAll();
+        $animaux =  $this->dao->fetchAll();
         include('../views/animaux/list.php');
     }
 }
