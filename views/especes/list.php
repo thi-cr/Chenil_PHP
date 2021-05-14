@@ -12,7 +12,6 @@
                 <td hidden<?= $espece->__get('id'); ?></td>
                 <td><?= $espece->__get('nom'); ?></td>
 
-                <td><a href="/especes/show/<?= $espece->id; ?>">VOIR</a></td>
                 <td><a href="/especes/edit/<?= $espece->id; ?>">EDIT</a></td>
                 <td>
                     <form method="post" action="/especes/delete">

@@ -36,11 +36,6 @@ class EspeceController extends AbstractController
         include('../views/especes/list.php');
     }
 
-    public function show($id)
-    {
-        $espece = $this->dao->fetch($id);
-        include('../views/especes/one.php');
-    }
 
     public function edit($id)
     {
