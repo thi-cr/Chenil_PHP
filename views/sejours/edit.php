@@ -8,7 +8,7 @@
         <select name="animal" id="animal">
             <?php foreach ($animaux as $animal): ; ?>
                 <option type="text" name="animal_id"
-                        value="<?= $animal->id; ?>" <?php if ($sejour->__get('animal_id') == $animal->id){ echo 'selected'; } ?>
+                        value="<?= $animal->id; ?>" <?php if ($sejour->animal_id->__get('id') == $animal->id){ echo 'selected'; } ?>
                 ><?= $animal->nom ?></option>
             <?php endforeach; ?>
         </select>
