@@ -1,8 +1,8 @@
 <section>
     <form action="/races/store" method="post">
         <br><label>Nom :</label>
-        <input type="text" name="nom">
-        <select name="espece" id="espece">
+        <input type="text" name="nom" required>
+        <select name="espece" id="espece" required>
             <?php foreach ($especes as $espece): ; ?>
                 <option type="text" name="espece"
                         value="<?= $espece->id; ?>"
