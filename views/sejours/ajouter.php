@@ -1,10 +1,10 @@
 <section>
     <form action="/sejours/store" method="post">
         <br><label>Date Debut</label>
-        <input type="date" name="date_debut">
+        <input type="date" name="date_debut" required>
         <br><label>Date Fin</label>
-        <input type="date" name="date_fin">
-        <select name="animal" id="animal">
+        <input type="date" name="date_fin" required>
+        <select name="animal" id="animal" required>
             <?php foreach ($animaux as $animal): ; ?>
                 <option type="text" name="animal_id"
                         value="<?= $animal->id; ?>"
