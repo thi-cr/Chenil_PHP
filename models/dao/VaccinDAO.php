@@ -76,19 +76,19 @@ class VaccinDAO extends AbstractDAO
 
     function store($id, $data)
     {
-        if (empty($data['nom']) || empty($data['espece_id'])) {
+        if (empty($data['nom']) || empty($data['espece'])) {
             return false;
         }
 
 
         try {
             $statement = $this->connection->prepare(
-                "INSERT INTO {$this->table} (nom, description, espece_id) VALUES (?, ?)"
+                "INSERT INTO {$this->table} (nom, description, espece_id) VALUES (?, ?, ?)"
             );
             $statement->execute([
                 htmlspecialchars($data['nom']),
                 htmlspecialchars($data['description']),
-                htmlspecialchars($data['espece_id'])
+                htmlspecialchars($data['espece'])
             ]);
             return true;
         } catch (PDOException $e) {
