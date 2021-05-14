@@ -36,11 +36,6 @@ class sejourController extends AbstractController
         include('../views/sejours/list.php');
     }
 
-    public function show($id)
-    {
-        $sejour = $this->dao->fetch($id);
-        include('../views/sejours/one.php');
-    }
 
     public function edit($id)
     {
