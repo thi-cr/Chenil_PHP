@@ -51,10 +51,11 @@ class RaceDAO extends AbstractDAO
     public function update($id, $data)
     {
         try {
-            $statement = $this->connection->prepare("UPDATE {$this->table} SET nom = ? WHERE id = ?");
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET nom = ?, espece_id = ? WHERE id = ?");
             $statement->execute(
                 [
                     htmlspecialchars($data['nom']),
+                    htmlspecialchars($data['espece']),
                     htmlspecialchars($data['id'])
                 ]
             );
