@@ -127,4 +127,18 @@ abstract class AbstractDAO {
 
     }
 
+    public function remove ($table, $id, $key) {
+
+        try {
+            $statement = $this->connection->prepare("DELETE FROM {$table} WHERE {$key} = ?");
+            $statement->execute([
+                $id,
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+
+    }
+
 }

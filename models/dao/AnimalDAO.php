@@ -43,6 +43,10 @@ class AnimalDAO extends AbstractDAO
         }
     }
 
+    public function remove_vaccins($id){
+        $this->remove('vaccin_animal', $id, 'animal_id');
+    }
+
     function create($result)
     {
         return new Animal(
