@@ -75,6 +75,7 @@ class AnimalDAO extends AbstractDAO
 
     function store($id, $data)
     {
+        var_dump($data);
         if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['personne']) || empty($data['race'])) {
             return false;
         }

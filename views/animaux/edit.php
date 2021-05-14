@@ -5,9 +5,15 @@
             <br><label>Nom</label>
             <input type="text" name="nom" value="<?= $animal->__get('nom'); ?>">
             <br><label>Sexe</label>
-            <input type="text" name="sexe" value="<?= $animal->__get('sexe'); ?>">
+            <select id="sexe" name="sexe" required>
+                <option value="M" <?php if ($animal->__get('sexe') == 'M') {echo  'selected';} ?>>Male</option>
+                <option value="F" <?php if ($animal->__get('sexe') == 'F') {echo  'selected';} ?>>Femelle</option>
+            </select>
             <br><label>Strérilisé</label>
-            <input type="text" name="sterilise" value="<?= $animal->__get('sterilise'); ?>">
+            <select name="sterilise" id="sterilise" required>
+                <option value="O" <?php if ($animal->__get('sterilise') == 'O') {echo  'selected';} ?>>Oui</option>
+                <option value="N" <?php if ($animal->__get('sterilise') == 'N') {echo  'selected';} ?>>Non</option>
+            </select>
             <br><label>Date de naissance</label>
             <input type="date" name="date_naissance" value="<?= $animal->__get('date_naissance'); ?>">
             <br><label>Numero de puce</label>
