@@ -79,7 +79,6 @@ class AnimalDAO extends AbstractDAO
 
     function store($id, $data)
     {
-        var_dump($data);
         if (empty($data['nom']) || empty($data['sexe']) || empty($data['sterilise']) || empty($data['date_naissance']) || empty($data['numero_puce']) || empty($data['personne']) || empty($data['race'])) {
             return false;
         }
@@ -176,9 +175,7 @@ class AnimalDAO extends AbstractDAO
                 $animalDAO->dissociate_vaccins($data['id'], $diff['dissociate']);
             }
         }else{
-            $diff = $animal->has_vaccins($data['vaccins']);
-            $animalDAO->dissociate_vaccins($data['id'], $diff['dissociate']);
-
+            $animalDAO->remove_vaccins($data['id']);
         }
 
     }
