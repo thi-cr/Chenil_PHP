@@ -57,8 +57,8 @@ class RaceController extends AbstractController
 
     public function add()
     {
-        $animalDAO = new AnimalDAO();
-        $animaux = $animalDAO->fetchAll();
+        $especeDAO = new EspeceDAO();
+        $especes = $especeDAO->fetchAll();
         include('../views/races/ajouter.php');
     }
 
