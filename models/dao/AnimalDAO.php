@@ -161,7 +161,7 @@ class AnimalDAO extends AbstractDAO
         $animal = $this->fetch($data['id']);
         $animalDAO = new AnimalDAO();
 
-        if ($data['vaccins']) {
+        if (isset($data['vaccins'])) {
             $diff = $animal->has_vaccins($data['vaccins']);
 
             if ($diff['associate']) {
@@ -171,6 +171,11 @@ class AnimalDAO extends AbstractDAO
             if ($diff['dissociate']) {
                 $animalDAO->dissociate_vaccins($data['id'], $diff['dissociate']);
             }
+        }else{
+            $diff = $animal->has_vaccins($data['vaccins']);
+            $animalDAO->dissociate_vaccins($data['id'], $diff['dissociate']);
+
         }
+
     }
 }
