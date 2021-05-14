@@ -1,3 +1,4 @@
+<?php if ($sejour): ?>
 <section>
     <form action="/sejours/update" method="post">
         <input readonly type="hidden" name="id" value="<?= $sejour->__get('id'); ?>">
@@ -15,3 +16,4 @@
         <input type="submit" value="mettre a jour" name="updatesejour">
     </form>
 </section>
+<?php endif?>
