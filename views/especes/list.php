@@ -3,7 +3,7 @@
     <section id="espece-list">
         <table>
             <thead>
-            <th>nom</th>
+            <th>Espèce</th>
             </thead>
 
         <tbody>
