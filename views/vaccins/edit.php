@@ -9,7 +9,7 @@
                 <?php foreach ($especes as $espece): ; ?>
                     <option type="text" name="espece_id"
                             value="<?= $espece->id; ?>"
-                    ><?= $espece->nom ?></option>
+                        <?php if ($vaccin->espece_id->id == $espece->id) {echo 'selected';}?>><?= $espece->nom ?></option>
                 <?php endforeach; ?>
             </select>
             <input type="submit" value="Mettre à jour" name="modifvaccin">

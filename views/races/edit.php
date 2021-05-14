@@ -8,7 +8,7 @@
                 <?php foreach ($especes as $espece): ; ?>
                     <option type="text" name="espece"
                             value="<?= $espece->id; ?>"
-                            } ?><?= $espece->nom ?></option>
+                            <?php if ($race->espece_id->id == $espece->id) {echo 'selected';}?>><?= $espece->nom ?></option>
                 <?php endforeach; ?>
             </select>
 
