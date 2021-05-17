@@ -1,3 +1,7 @@
+<section id="erreur">
+    <?php if (isset($error)) {echo $error;}; ?>
+</section>
+<section id="animaux-list">
 <?php if (!empty($animaux)): ?>
     <section id="animaux-list">
         <table>

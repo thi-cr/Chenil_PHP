@@ -35,11 +35,12 @@ class AnimalController extends AbstractController
 
     public function delete($id, $data)
     {
-        $this->dao->delete($data);
+        //$this->dao->delete($data);
+        $error = $this->dao->delete($data);
         $animaux = $this->dao->fetchAll();
-        include('../views/head.php');
+        //include('../views/head.php');
         include('../views/animaux/list.php');
-        include('../views/foot.php');
+        //include('../views/foot.php');
     }
 
     public function show($id)
