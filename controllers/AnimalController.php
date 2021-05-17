@@ -11,7 +11,6 @@ class AnimalController extends AbstractController
     public function index()
     {
         $animaux = $this->dao->fetchAll();
-
         $personneDAO = new PersonneDAO();
         $personnes = $personneDAO->fetchAll();
         include('../views/head.php');
