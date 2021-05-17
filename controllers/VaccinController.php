@@ -36,11 +36,9 @@ class vaccinController extends AbstractController
 
     public function delete($id, $data)
     {
-        $this->dao->delete($data);
+        $error = $this->dao->delete($data);
         $vaccins = $this->dao->fetchAll();
-        include('../views/head.php');
         include('../views/vaccins/list.php');
-        include('../views/foot.php');
     }
 
     public function edit($id)
