@@ -24,7 +24,6 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-        <td><a href="/sejours/add">AJOUTER</a></td>
     </section>
 <?php endif; ?>
 <td><a href="/sejours/add">AJOUTER</a></td>
