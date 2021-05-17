@@ -6,11 +6,10 @@
     </section>
     <section id="especes-list">
         <?php if (!empty($especes)): ?>
-
             <section id="espece-list">
                 <table>
                     <thead>
-                    <td>Espèce</td>
+                    <th>Espèce</th>
                     </thead>
 
                     <tbody>
@@ -33,8 +32,7 @@
                 </table>
                 <td><a href="/especes/add">AJOUTER</a></td>
             </section>
-
-
         <?php endif; ?>
     </section>
 </section>
+

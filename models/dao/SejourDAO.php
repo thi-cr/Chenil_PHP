@@ -46,7 +46,7 @@ class SejourDAO extends AbstractDAO
                 $data['id']
             ]);
         } catch (PDOException $e) {
-            print $e->getMessage();
+            return $e->getMessage();
         }
     }
 
