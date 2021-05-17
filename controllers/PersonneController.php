@@ -22,7 +22,9 @@ class PersonneController extends AbstractController
         $is_stored_in_db = $this->dao->store($id, $data);
         if ($is_stored_in_db) {
             $personnes = $this->dao->fetchAll();
+            include('../views/head.php');
             include('../views/personnes/list.php');
+            include('../views/foot.php');
         } else {
             echo "Erreur";
             return http_response_code(401);
@@ -33,13 +35,17 @@ class PersonneController extends AbstractController
     {
         $this->dao->delete($data);
         $personnes = $this->dao->fetchAll();
+        include('../views/head.php');
         include('../views/personnes/list.php');
+        include('../views/foot.php');
     }
 
     public function show($id)
     {
         $personne = $this->dao->fetch($id);
+        include('../views/head.php');
         include('../views/personnes/one.php');
+        include('../views/foot.php');
     }
 
     public function edit($id)
@@ -47,21 +53,26 @@ class PersonneController extends AbstractController
         $personne = $this->dao->fetch($id);
         $animalDAO = new AnimalDAO();
         $animaux = $animalDAO->fetchAll();
-
+        include('../views/head.php');
         include('../views/personnes/edit.php');
+        include('../views/foot.php');
     }
 
     public function update($id, $data)
     {
         $this->dao->update($id, $data);
         $personnes = $this->dao->fetchAll();
+        include('../views/head.php');
         include('../views/personnes/list.php');
+        include('../views/foot.php');
     }
 
     public function add()
     {
         $animalDAO = new AnimalDAO();
         $animaux = $animalDAO->fetchAll();
+        include('../views/head.php');
         include('../views/personnes/ajouter.php');
+        include('../views/foot.php');
     }
 }

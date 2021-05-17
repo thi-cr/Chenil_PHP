@@ -25,7 +25,9 @@ class RaceController extends AbstractController
         $is_stored_in_db = $this->dao->store($id, $data);
         if ($is_stored_in_db) {
             $races = $this->dao->fetchAll();
+            include('../views/head.php');
             include('../views/races/list.php');
+            include('../views/foot.php');
         } else {
             echo "Erreur";
             return http_response_code(401);
@@ -36,7 +38,9 @@ class RaceController extends AbstractController
     {
         $this->dao->delete($data);
         $races = $this->dao->fetchAll();
+        include('../views/head.php');
         include('../views/races/list.php');
+        include('../views/foot.php');
     }
 
     public function edit($id)
@@ -44,22 +48,27 @@ class RaceController extends AbstractController
         $race = $this->dao->fetch($id);
         $especeDAO = new EspeceDAO();
         $especes = $especeDAO->fetchAll();
-
+        include('../views/head.php');
         include('../views/races/edit.php');
+        include('../views/foot.php');
     }
 
     public function update($id, $data)
     {
         $this->dao->update($id, $data);
         $races = $this->dao->fetchAll();
+        include('../views/head.php');
         include('../views/races/list.php');
+        include('../views/foot.php');
     }
 
     public function add()
     {
         $especeDAO = new EspeceDAO();
         $especes = $especeDAO->fetchAll();
+        include('../views/head.php');
         include('../views/races/ajouter.php');
+        include('../views/foot.php');
     }
 
 }
