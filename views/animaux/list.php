@@ -1,4 +1,4 @@
-<section class="animaux-container">
+<section class="big-container">
 <section id="erreur">
     <?php if (isset($error)) {
         echo $error;
@@ -32,8 +32,8 @@
                         <td><a href="/animaux/show/<?= $animal->id; ?>">VOIR</a></td>
                         <td><a href="/animaux/edit/<?= $animal->id; ?>">EDIT</a></td>
                         <td>
-                            <form method="post" class="deleteAnimal" action="/animaux/delete">
-                                <input type="hidden" name="id" class="deleteAnimalId" value="<?= $animal->id; ?>">
+                            <form method="post" class="deleteForm" action="/animaux/delete">
+                                <input type="hidden" name="id" class="deleteId" value="<?= $animal->id; ?>">
                                 <input type="submit" value="Supprimer" name="delete">
                             </form>
                         </td>

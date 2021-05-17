@@ -1,11 +1,11 @@
 $(document).ready(function () {
     console.log('hahahahahahahahahahahahahaha')
-    $('.deleteAnimal').on('submit', function (event) {
+    $('body').on('submit','.deleteForm', function (event) {
         event.preventDefault();
-        $.post('/animaux/delete', {id: $(this).find('.deleteAnimalId').val()})
+        $.post($(this).attr('action'), {id: $(this).find('.deleteId').val()})
             .done(function (resultat) {
                 console.log($(resultat))
-                $('.animaux-container').html($(resultat).html())
+                $('.big-container').html($(resultat).html())
             })
     })
 })

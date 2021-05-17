@@ -33,11 +33,9 @@ class EspeceController extends AbstractController
 
     public function delete($id, $data)
     {
-        $this->dao->delete($data);
+        $error = $this->dao->delete($data);
         $especes = $this->dao->fetchAll();
-        include('../views/head.php');
         include('../views/especes/list.php');
-        include('../views/foot.php');
     }
 
 
