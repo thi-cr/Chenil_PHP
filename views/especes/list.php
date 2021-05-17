@@ -30,9 +30,9 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-                <td><a href="/especes/add">AJOUTER</a></td>
             </section>
         <?php endif; ?>
+        <td><a href="/especes/add">AJOUTER</a></td>
     </section>
 </section>
 

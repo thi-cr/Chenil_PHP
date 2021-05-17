@@ -29,8 +29,8 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-                <td><a href="/races/add">AJOUTER</a></td>
             </section>
         <?php endif; ?>
+        <td><a href="/races/add">AJOUTER</a></td>
     </section>
 </section>

@@ -41,8 +41,8 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-                <td><a href="/animaux/add">AJOUTER</a></td>
             </section>
         <?php endif; ?>
+        <td><a href="/animaux/add">AJOUTER</a></td>
     </section>
 </section>

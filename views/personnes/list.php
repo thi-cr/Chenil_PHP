@@ -36,8 +36,8 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-                <td><a href="/personnes/add">AJOUTER</a></td>
             </section>
         <?php endif; ?>
+        <td><a href="/personnes/add">AJOUTER</a></td>
     </section>
 </section>
