@@ -33,11 +33,9 @@ class PersonneController extends AbstractController
 
     public function delete($id, $data)
     {
-        $this->dao->delete($data);
+        $error = $this->dao->delete($data);
         $personnes = $this->dao->fetchAll();
-        include('../views/head.php');
         include('../views/personnes/list.php');
-        include('../views/foot.php');
     }
 
     public function show($id)
